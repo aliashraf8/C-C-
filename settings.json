@@ -1,0 +1,32 @@
+{
+    "cmake.options.statusBarVisibility": "icon",
+    "code-runner.runInTerminal": true,
+    "github.copilot.editor.enableAutoCompletions": false,
+    "workbench.activityBar.location": "top",
+    "editor.inlayHints.enabled": "off",
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#1073cf2d",
+        "editor.lineHighlightBorder": "#9fced11f"
+    },
+    "explorer.sortorder":"type",
+    "files.exclude":{"**/*.exe":true },
+    "diffEditor.wordWrap": "off",
+    "editor.guides.indentation": false,
+    "editor.guides.bracketPairs": false,
+    "blockman.n04ColorComboPreset": "Oxygen Dark (Gradients)",
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": false,
+    "editor.overtypeCursorStyle": "line",
+    "editor.renderLineHighlight": "none",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.foldingHighlight": false,
+    "cmake.showOptionsMovedNotification": false,
+    "terminal.integrated.cursorStyle": "line",
+    "editor.matchBrackets": "near",
+    "grunt.autoDetect": "on",
+    "gulp.autoDetect": "on",
+    "jake.autoDetect": "on",
+    "editor.stickyScroll.enabled": false,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "workbench.statusBar.visible": false
+}

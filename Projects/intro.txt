@@ -1,0 +1,4 @@
+Triangle Calculator :
+i am here to check triangle validity and calculate perimeter and area for valid triangles
+..................
+please enter your sides lengthes
