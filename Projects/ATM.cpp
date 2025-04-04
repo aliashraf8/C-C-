@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//MAIN MENU OPTION DECLARED GLOABALY FOR WIDE SCOPE.
 const string MAIN_MENU_ITEMS[]=
 {
     "WELCOME :\n----------- ",
@@ -11,28 +12,37 @@ const string MAIN_MENU_ITEMS[]=
 };
 const string LINE ="------------------------------------";
 
+//VIRTUAL STARTING BALANCE.
 int REMAINING_BALANCE = 5000;
 
-void MAIN_MENU(void);
-void WITHDRAW (void);
-void DEPOSIT (void);
+void MAIN_MENU(void);//FUNCTION PRINTS THE MAIN MENU OPTIONS.
+void WITHDRAW (void);//FUNCTION TO WITHDRAW.(SUBTRACTING FROM BALANCE).
+void DEPOSIT (void);//FUNCTION TO DEPOSIT.(ADDING TO BALANCE).
 
-void PIN_VERFICATION (void);
-void CLEAR_SCREEN(void);
-void PRINT_REMAINIG_BALANCE(void);
+void PIN_VERFICATION (void);//FUNCTION TO ASK TO PIN VERFICATION.
+void CLEAR_SCREEN(void);//TO CLEAR TERMINAL.
+void PRINT_REMAINIG_BALANCE(void);//PRITING REMAINING BALANCE.
 int main()
 {
     CLEAR_SCREEN();
-    // PIN_VERFICATION();
+    PIN_VERFICATION();//ASKING FOR PIN ... ACTUALLY ANY FOUR DIGIT PIN WILL BE ACCEPTED. 
+    CLEAR_SCREEN();//CLEAR TERMINAL.
     
     int choice;
     while(true)
     {
-        CLEAR_SCREEN();
-        MAIN_MENU();
-        PRINT_REMAINIG_BALANCE();
+        MAIN_MENU();//MAIN MENU OPTIONS.
+        PRINT_REMAINIG_BALANCE();//PRINTING REMAINING BALANCE.
         cout<<"\nENTER NUMBER TO CHOOSE THE PREFERED SERVICE >> "; 
         cin>>choice;
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore(10000,'\n');
+            CLEAR_SCREEN();
+            cout<<"PLEASE CHOOSE THE PREFERD SERVICE NUMBER\n";
+            continue;
+        }
         switch(choice)
         {
             case 1://WITHDRAW.
@@ -55,7 +65,9 @@ int main()
 
             default:
             {
-                exit(1);
+                CLEAR_SCREEN();
+                cout<<"PLEASE CHOOSE THE PREFERD SERVICE NUMBER\n";
+                break;
             }
         }
     }
@@ -113,7 +125,7 @@ void CLEAR_SCREEN(void)
 
 void WITHDRAW (void)
 {
-    const string error_msg = "INVALID INPUT...PLEASE ENTER NUMERIC AMOUNT LESS THAN"; 
+    const string error_msg = "INVALID INPUT...PLEASE ENTER NUMERIC AMOUNT LESS THAN "; 
     unsigned int WITHDRAW_AMOUNT;
     
     CLEAR_SCREEN();
@@ -167,35 +179,63 @@ void PRINT_REMAINIG_BALANCE(void)
     cout<<LINE<<endl;
 }
 
-void DEPOSIT (void)
+void DEPOSIT(void)
 {
     CLEAR_SCREEN();
-    cout<<MAIN_MENU_ITEMS[2]<<endl;
+    cout << MAIN_MENU_ITEMS[2] << endl;
     PRINT_REMAINIG_BALANCE();
     unsigned int DEPOSIT_AMOUNT;
-    while(true)
+
+    while (true)
     {
-        cout<<"ENTER AMOUNT YOU WANT TO DEPOSIT >>> ";
-        cin>>DEPOSIT_AMOUNT;
-        if(cin.fail())
+        cout << "ENTER AMOUNT YOU WANT TO DEPOSIT >>> ";
+        cin >> DEPOSIT_AMOUNT;
+
+        if (cin.fail() || DEPOSIT_AMOUNT <= 0)
         {
             cin.clear();
-            cin.ignore(10000,'\n');
+            cin.ignore(10000, '\n');
+            CLEAR_SCREEN();
+            cout << "Invalid input or deposit amount must be greater than 0. Please try again.\n";
             continue;
         }
-        else
+
+        CLEAR_SCREEN();
+        int confirm;
+        cout << "ARE YOU SURE DEPOSITING " << DEPOSIT_AMOUNT << " ?\n (1 for Yes, 2 for No): ";
+        cin >> confirm;
+
+        if (cin.fail() || (confirm != 1 && confirm != 2))
         {
-            CLEAR_SCREEN();
-            REMAINING_BALANCE += DEPOSIT_AMOUNT;
-            PRINT_REMAINIG_BALANCE();
-            cout<<"PRESS ENTER TO GO BACK TO MAIN MENU\n";
-            cin.ignore();
-            cin.get();
-            CLEAR_SCREEN();
-            break;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "ERROR: Invalid input. Please try again...\n";
+            continue;
+        }
+
+        switch (confirm)
+        {
+            case 1:
+                REMAINING_BALANCE += DEPOSIT_AMOUNT;
+                PRINT_REMAINIG_BALANCE();
+                cout << "PRESS ENTER TO GO BACK TO MAIN MENU\n";
+                cin.ignore();
+                cin.get();
+                CLEAR_SCREEN();
+                return;
+
+            case 2:
+                cout << "Deposit canceled.\n";
+                return;
+
+            default:
+                CLEAR_SCREEN();
+                cout << "Invalid option. Please choose 1 for Yes or 2 for No.\n";
+                continue;
         }
     }
 }
+
 
 void ERROR_HANDLING (string error_msg)
 {
@@ -214,9 +254,3 @@ void BACK_TO_MAIN_MENU(void)
     cin.get();
 }
 
-void BACK_TO_MAIN_MENU(void)
-{
-    cout<<"PRESS ENTER TO GO BACK TO MAIN MENU";
-    cin.ignore();
-    cin.get();
-}
