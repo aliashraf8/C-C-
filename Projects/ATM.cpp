@@ -196,3 +196,27 @@ void DEPOSIT (void)
         }
     }
 }
+
+void ERROR_HANDLING (string error_msg)
+{
+    if(cin.fail())
+    {
+        cin.clear();
+        cin.ignore(10000,'\n');
+        cout<<error_msg;
+    }
+}
+
+void BACK_TO_MAIN_MENU(void)
+{
+    cout<<"PRESS ENTER TO GO BACK TO MAIN MENU";
+    cin.ignore();
+    cin.get();
+}
+
+void BACK_TO_MAIN_MENU(void)
+{
+    cout<<"PRESS ENTER TO GO BACK TO MAIN MENU";
+    cin.ignore();
+    cin.get();
+}
