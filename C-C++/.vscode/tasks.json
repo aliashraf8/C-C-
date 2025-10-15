@@ -427,7 +427,7 @@
       "detail": "compiler: C:\\MinGW\\bin\\g++.exe"
     },
     {
-      "type": "cppbuild",
+      "type": "cppbuild"
       "label": "C/C++: g++.exe build active file",
       "command": "C:\\MinGW\\bin\\g++.exe",
       "args": [

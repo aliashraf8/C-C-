@@ -303,7 +303,7 @@ void ADD_NEW_CONTACT (void)
                     return;
                 }
                 break;
-
+                
                 case 2:// RE-ENTER DETAILS.
                 {
                     // PRINT OUT THE HEADLINE.
