@@ -1,4 +1,3 @@
-tab khod dah 3edo
 #include<vector>
 #include<fstream>
 #include<sstream>

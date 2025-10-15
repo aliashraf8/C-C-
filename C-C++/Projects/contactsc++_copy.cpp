@@ -1,9 +1,9 @@
-#include<iostream>
+#include<vector>
 #include<sstream>
 #include<fstream>
-#include<vector>
-#include<algorithm>
 #include<iomanip>
+#include<iostream>
+#include<algorithm>
 
 using namespace std;
 
@@ -319,7 +319,7 @@ string GET_STRING (size_t max_length)
     string String;
 
      // IF THE NEXT CHARACTER IS A NEWLINE, THEN IGNORE IT
-     if(cin.peek() == '\n')
+    if(cin.peek() == '\n')
     {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
@@ -363,7 +363,7 @@ void SEARCH_CONTACTS(void)
     {
         cin.clear();
         cin.ignore(10000,'\n');
-        cout << "Invalid input!\n";
+        cout << "Invalid input!\n"; 
         return;
     }
 
